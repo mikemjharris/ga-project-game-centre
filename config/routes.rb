@@ -1,4 +1,10 @@
 SirrahGames::Application.routes.draw do
+  resources :ttts
+
+  root to: "homes#index" 
+
+  #:path => "tictactoe"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

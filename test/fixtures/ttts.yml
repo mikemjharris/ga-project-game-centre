@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  player_one: 1
+  player_two: 1
+  computer: 1
+  player_one_position: 1
+  player_two_position: 1
+  live_game: false
+  winner: 1
+
+two:
+  player_one: 1
+  player_two: 1
+  computer: 1
+  player_one_position: 1
+  player_two_position: 1
+  live_game: false
+  winner: 1
