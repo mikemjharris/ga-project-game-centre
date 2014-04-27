@@ -1,5 +1,7 @@
 SirrahGames::Application.routes.draw do
   resources :ttts
+  resources :users 
+  resources :sessions 
 
   root to: "homes#index" 
 

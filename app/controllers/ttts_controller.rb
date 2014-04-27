@@ -21,23 +21,17 @@ class TttsController < ApplicationController
      :next_player =>  1,
      :computer => false
     })
-
     new_game.save
-
     redirect_to ttt_path(new_game)
   end
 
-  def update
 
+  def update
     @ttt = Ttt.find(params[:id]).make_move(params[:move])
-    
     if @ttt.check_solution 
         @ttt.update_status
-    end
-
-      
+    end 
     redirect_to ttt_path(@ttt)
-
   end
 
   def destroy
