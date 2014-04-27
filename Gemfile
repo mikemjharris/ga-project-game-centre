@@ -13,6 +13,7 @@ gem 'cancan', '1.6.10'
 gem 'carrierwave', '0.9.0' #remove for heroku
 gem 'rmagick'
 
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-stack_explorer'

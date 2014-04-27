@@ -1,20 +1,27 @@
 <h2>Tic Tac Toe</h2>
 
+<% if @ttt.winner %>
+  <p>Player <%= @ttt.winner %> you won!</p>
+<% else %>
+  <p>Player<%= @ttt.next_player %>s turn</p>
+<% end %>
+
 
 <div class="game_container">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-<div>    
+
+
+    <% (0...9).each do |i| %>
+      <div class="<%= box_class(i) %>">
+        <% if box_class(i) == "blank" && @ttt.winner.nil? %>
+          <%= button_to 'Move', ttt_path(@ttt, :move => 2 ** (8-i)), :method => :put  %>
+        <% end %>
+      </div>
+    <% end %>
+     
+</div>  
 
 
 
 
 <a href="/">back to game centre</a>
+<%= link_to "Play vs Player 2 (same computer)", new_ttt_path %>
