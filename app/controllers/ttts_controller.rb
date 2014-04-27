@@ -6,7 +6,6 @@ class TttsController < ApplicationController
 
   def show
     @ttt = Ttt.find(params[:id])
-
   end
 
   def edit
@@ -15,7 +14,9 @@ class TttsController < ApplicationController
 
 
   def new
-    new_game = Ttt.new({:player_one_position => 0,
+    
+    new_game = Ttt.new({:player_one => current_user.id,
+     :player_one_position => 0,
      :player_two_position => 0, 
      :live_game => true,
      :next_player =>  1,

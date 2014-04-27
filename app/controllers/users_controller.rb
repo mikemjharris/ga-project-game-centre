@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
 
-  def index
-
-  end
-
+ 
   def show
     
 
@@ -28,6 +25,11 @@ class UsersController < ApplicationController
         render action: "new" 
       end
   end
+
+  def update 
+
+  end
+  
 
   def destroy
 

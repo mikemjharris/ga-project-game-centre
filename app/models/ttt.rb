@@ -80,4 +80,14 @@ class Ttt < ActiveRecord::Base
     end
 
   end
+
+  def player_name
+    if self.next_player == 1 && self.player_one 
+      return User.find(self.player_one).name
+    elsif self.player_two
+      return User.find(self.player_two).name
+    end
+
+
+  end
 end

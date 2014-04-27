@@ -3,7 +3,11 @@
 <% if @ttt.winner %>
   <p>Player <%= @ttt.winner %> you won!</p>
 <% else %>
+  <% if @ttt.player_name %>
+    <p><%= @ttt.player_name %>s turn</p>
+  <% else %>
   <p>Player<%= @ttt.next_player %>s turn</p>
+  <% end %>
 <% end %>
 
 
