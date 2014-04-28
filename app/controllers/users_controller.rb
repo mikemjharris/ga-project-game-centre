@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
       if @user.save
+        session[:current_user_id] = @user.id
         redirect_to root_path, notice: 'User was successfully created.' 
       else
         render action: "new" 
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
   def update 
 
   end
-  
+
 
   def destroy
 

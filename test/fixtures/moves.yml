@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ttt_id: 1
+  player: 1
+  move: 1
+
+two:
+  ttt_id: 1
+  player: 1
+  move: 1

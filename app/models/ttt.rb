@@ -3,6 +3,8 @@ class Ttt < ActiveRecord::Base
   attr_accessible :computer, :live_game, :player_one, :player_one_position, 
     :player_two, :player_two_position, :winner, :next_player
 
+  has_many :moves  
+  
   belongs_to :player_one, class_name: 'User'
   belongs_to :player_two, class_name: 'User'
 
@@ -18,6 +20,27 @@ class Ttt < ActiveRecord::Base
       self.save
     end
 
+    def update_board(move)
+        self.make_move(move)
+        if self.check_solution 
+          self.update_status
+        elsif self.computer && self.next_player == 2
+
+          computer_move = self.computer_move
+          update_board (computer_move)
+        end
+
+    end
+
+    def computer_move
+      free_squares = "%09b" % (511 - self.player_one_position - self.player_two_position)
+      moves = []
+      (0...9).each do |i| 
+          moves << free_squares[i].to_i * (2 ** (8-i))
+      end
+      moves.delete(0)
+      moves.sample
+    end
 
 
     def make_move(move)
@@ -32,6 +55,7 @@ class Ttt < ActiveRecord::Base
         self
     end
     
+
 
   
   
@@ -85,11 +109,10 @@ class Ttt < ActiveRecord::Base
 
   def player_name
     
-    if self.next_player == 1 && self.player_one 
-
+    if self.next_player == 1 && self.player_one
       return self.player_one.name
     elsif self.player_two
-      return User.find(self.player_two).name
+      return self.player_two.name
     end
   end
 end

@@ -24,6 +24,23 @@ module TttsHelper
     end  
   end
 
-  
+  def winner_name
+    case @ttt.winner
+     when 1
+      if @ttt.player_one.name
+        name = @ttt.player_one.name
+      else 
+        name = "Player one"
+      end
+     when 2
+      if @ttt.player_two.nil?
+        name = "Player two"
+      else 
+        name = @ttt.player_two.name
+      end   
+    end  
+          
+  end 
+
 
 end

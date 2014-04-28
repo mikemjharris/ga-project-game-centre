@@ -1,7 +1,7 @@
 <h2>Tic Tac Toe</h2>
 
 <% if @ttt.winner %>
-  <p>Player <%= @ttt.winner %> you won!</p>
+  <p><%= winner_name %> you won!</p>
 <% else %>
   <% if @ttt.player_name %>
     <p><%= @ttt.player_name %>s turn</p>
@@ -27,5 +27,4 @@
 
 
 
-<a href="/">back to game centre</a>
-<%= link_to "Play vs Player 2 (same computer)", new_ttt_path %>
+
