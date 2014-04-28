@@ -3,17 +3,19 @@ class Ttt < ActiveRecord::Base
   attr_accessible :computer, :live_game, :player_one, :player_one_position, 
     :player_two, :player_two_position, :winner, :next_player
 
+  belongs_to :player_one, class_name: 'User'
+  belongs_to :player_two, class_name: 'User'
+
+
 
     def update_status
-
-        self.live_game = false
-        if self.next_player == 1
-          self.winner = 2
-        else
-          self.winner = 1
-        end
-        self.save
-
+      self.live_game = false
+      if self.next_player == 1
+        self.winner = 2
+      else
+        self.winner = 1
+      end
+      self.save
     end
 
 
@@ -82,12 +84,12 @@ class Ttt < ActiveRecord::Base
   end
 
   def player_name
+    
     if self.next_player == 1 && self.player_one 
-      return User.find(self.player_one).name
+
+      return self.player_one.name
     elsif self.player_two
       return User.find(self.player_two).name
     end
-
-
   end
 end

@@ -15,7 +15,8 @@ class TttsController < ApplicationController
 
   def new
     
-    new_game = Ttt.new({:player_one => current_user.id,
+    new_game = Ttt.new({:player_one => User.find(current_user.id),
+     :player_two => User.find(current_user.id), 
      :player_one_position => 0,
      :player_two_position => 0, 
      :live_game => true,
