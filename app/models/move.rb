@@ -27,7 +27,7 @@ class Move < ActiveRecord::Base
 
   # def check_user
   #   ttt =  Ttt.find(self.ttt_id)
-  #   unless ttt.player_one == current_user || ttt.player_two == current_user 
+  #   unless ttt.player_one_id == current_user_id || ttt.player_two_id == current_user_id 
   #     errors.add(:base, "Not a valid user")
   #   end
   # end

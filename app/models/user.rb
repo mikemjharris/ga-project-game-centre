@@ -10,14 +10,9 @@ class User < ActiveRecord::Base
   has_many :messages_as_to_user, foreign_key: 'to_user_id', class_name: 'User'
   has_many :messages
 
-
+  validate :name, prescence: true
   validate :email, prescence: true
   validate :email, uniqueness: true
-
-
-   
- 
- 
 
 
 end

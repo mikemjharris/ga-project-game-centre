@@ -5,19 +5,11 @@ class UsersController < ApplicationController
       @to_message_ids = current_user.messages.collect {|message| message.to_user_id}
 
   end
-  def games
-
-
-  end
 
  
   def show
     @user = current_user
     @live_games = Ttt.live_games(@user.id)
-    # @live_games = Ttt.where('live_game = ? and player_one_id = ? or player_two_id = ?', true, @user.id, @user.id)
-
-    
-
   end
 
   def edit

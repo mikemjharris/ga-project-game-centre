@@ -8,22 +8,13 @@
   <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
 </head>
 <body>
- <nav>
  
-<% if current_user %>
-       <div class="loginstatus loggedin">       
-        Hello, <%= current_user.name %> 
-        <%= link_to 'logout', session_path(0), method: :delete %>
-        <%= link_to "Messages/challenges", user_messages_path(current_user) %>
-        <%= link_to "Show your games in progress:", user_path(current_user) %>
-        </div>
-     <%= yield %>
- <% else %>
-      <div class="loginstatus loggedout"> 
-        <%= link_to 'Sign in', new_session_path %>
-        <%= link_to 'Sign up', new_user_path %>
-        </div>
-  <% end %>
+      <div class="home">
+      <div class="logo">sirraHGames</div>
+      
+      <%= yield %>
+      <div>
+      
 
 
 

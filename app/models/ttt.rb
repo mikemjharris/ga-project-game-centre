@@ -3,17 +3,23 @@ class Ttt < ActiveRecord::Base
   attr_accessible :computer, :live_game, :player_one, :player_one_position, 
     :player_two, :player_two_id, :player_two_position, :winner, :next_player
 
+  validates :player_one_id, :presence => true
+  validate :player_setup
+
   has_many :moves  
 
   belongs_to :player_one, class_name: 'User'
   belongs_to :player_two, class_name: 'User'
 
+  def player_setup
+    errors.add(:base, "Can't have a computer player and player two") if self.computer && self.player_two_id
+
+  end
 
     def self.live_games(user_id)
         where('ttts.live_game = ? and (ttts.player_one_id = ? or player_two_id = ?)', true, user_id, user_id)
     end
     
-
     def self.live_game(user_id1, user_id2)
       where('ttts.live_game = ? and ((ttts.player_one_id = ? and ttts.player_two_id = ?) or (ttts.player_one_id = ? and ttts.player_two_id = ?))', 
         true, user_id1, user_id2, user_id2, user_id1)    
@@ -21,14 +27,15 @@ class Ttt < ActiveRecord::Base
 
 
     def check_user_valid(current_user)
+
       if self.player_one == current_user && self.player_two.nil?
-        true
+        return true
       else
         case self.next_player 
           when 1
-            true if self.player_one == current_user
+            return true if self.player_one == current_user
           when 2  
-            true if self.player_two == current_user
+            return true if self.player_two == current_user
         end
       end
     end

@@ -14,10 +14,13 @@ module TttsHelper
   end
 
   def errors
-    if params[:errors].nil?
+   
+    if @move.nil?
         return []
-    else
-      return params[:errors]
+    elsif @move.errors.messages.any?
+      return @move.errors.messages
+    else 
+      return []
     end
   end
 

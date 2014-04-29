@@ -24,7 +24,32 @@ $color_board: #ff7373;
 }
 
 body{
-  margin: 20px;
+  height: 100%;
+}
+
+.home {
+  width: 80%;
+  max-width: 300px;
+  margin: 10% auto;
+  text-align: center;
+} 
+
+.home table {
+  margin: 0 auto;
+}
+
+input[type="text"] {
+  background: red;
+  padding: 10px;
+}
+
+.logo {
+  font-size: 2.8em;
+  padding: 20px 0;
+}
+.home a {
+  width: 100px;
+  margin: 5px;
 }
 
 li {
