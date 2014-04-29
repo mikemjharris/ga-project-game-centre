@@ -1,64 +1,62 @@
 class Ttt < ActiveRecord::Base
   require 'matrix'
   attr_accessible :computer, :live_game, :player_one, :player_one_position, 
-    :player_two, :player_two_position, :winner, :next_player
+    :player_two, :player_two_id, :player_two_position, :winner, :next_player
 
   has_many :moves  
-  
+
   belongs_to :player_one, class_name: 'User'
   belongs_to :player_two, class_name: 'User'
 
+    def check_user_valid(current_user)
+      if self.player_one == current_user && self.player_two.nil?
+        true
+      else
+        case self.next_player 
+          when 1
+            true if self.player_one == current_user
+          when 2  
+            true if self.player_two == current_user
+        end
+      end
+    end
 
+    def player
+      if self.next_player == 1
+        return 2
+      else
+        return 1
+      end 
+    end
 
     def update_status
       self.live_game = false
-      if self.next_player == 1
-        self.winner = 2
-      else
-        self.winner = 1
-      end
+      self.winner = self.player
       self.save
     end
 
-    def update_board(move)
-        self.make_move(move)
-        if self.check_solution 
+    def update_board
+      if self.check_solution 
+        self.update_status
+      elsif self.computer && self.next_player == 2
+        computer_move = self.computer_move
+        self.moves.create(player_move: computer_move, player: 2) 
+        self.next_player = 1
+        self.save
+         if self.check_solution 
           self.update_status
-        elsif self.computer && self.next_player == 2
-
-          computer_move = self.computer_move
-          update_board (computer_move)
-        end
-
+        end  
+      end
     end
 
     def computer_move
-      free_squares = "%09b" % (511 - self.player_one_position - self.player_two_position)
-      moves = []
-      (0...9).each do |i| 
-          moves << free_squares[i].to_i * (2 ** (8-i))
-      end
-      moves.delete(0)
-      moves.sample
+      free_squares = []
+      (0...9).each {|i| free_squares << 2 ** i}
+      self.moves.each {|move| free_squares.delete(move.player_move)}  
+      free_squares.sample
     end
 
-
-    def make_move(move)
-      if self.next_player == 1 
-        self.player_one_position += move.to_i
-        self.next_player = 2
-      else   
-        self.player_two_position += move.to_i
-        self.next_player = 1
-      end
-        self.save
-        self
-    end
-    
-
-
-  
-  
+ 
   def make_matrix(position_in_binary)
       size_of_grid = 3 
       Matrix.build(size_of_grid,size_of_grid) do |row, col| 
@@ -85,13 +83,29 @@ class Ttt < ActiveRecord::Base
     end
   end
 
-  def check_solution
-    if self.next_player == 2 
-      player_position = self.player_one_position
-    else
-      player_position = self.player_two_position
-    end 
+  def player_one_moves
+    self.moves.where(player: 1).collect {|move| move.player_move}
+  end
 
+  def player_two_moves
+    self.moves.where(player: 2).collect {|move| move.player_move}
+  end
+
+  def valid_move(move)
+    if self.player_one_moves.include?(move.to_i) || self.player_two_moves.include?(move.to_i)
+      return false
+    else
+      return true
+    end
+  end  
+
+  def check_solution
+    player_position = 0
+    if self.next_player == 2 
+      self.moves.where(player: 1).each {|move| player_position += move.player_move}
+    else
+      self.moves.where(player: 2).each {|move| player_position += move.player_move}
+    end 
     position_in_binary = ("%09b" % player_position)
     position_matrix = make_matrix(position_in_binary)
    

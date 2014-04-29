@@ -15,10 +15,9 @@ class TttsController < ApplicationController
 
   def new
     new_game = Ttt.new({:player_one => current_user,
-     :player_one_position => 0,
-     :player_two_position => 0, 
-     :live_game => true,
-     :next_player =>  1
+      :player_two_id => params[:player_two].to_i,
+     :next_player =>  1,
+
     })
 
     if params[:computer]
@@ -32,11 +31,6 @@ class TttsController < ApplicationController
 
   def update
     @ttt = Ttt.find(params[:id])
-    @ttt.update_board(params[:move])
-    # @ttt = Ttt.find(params[:id]).make_move(params[:move])
-    # if @ttt.check_solution 
-    #     @ttt.update_status
-    # end 
     redirect_to ttt_path(@ttt)
   end
 
@@ -44,6 +38,6 @@ class TttsController < ApplicationController
 
   end
 
-
+  
 
 end

@@ -1,0 +1,13 @@
+<h2>Your Messages</h2>
+
+<h3>Messages from you</h3>
+<% @to_messages.each do |message| %>
+  <p>Sent to <%= message.to_user.name %>: <%= message.title %> <%= message.message %></p>
+    <%= link_to 'Retract Challenge', user_message_path(current_user, message), method: :delete %>
+<% end %>
+
+<h3>Messages to you</h3>
+<% @from_messages.each do |message| %>
+  <p>From <%= message.user.name %>: <%= message.message %></p>
+  <%= link_to 'Accept challenge', new_ttt_path(player_two: message.user) %> 
+<% end %>

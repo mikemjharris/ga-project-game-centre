@@ -11,10 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140428130204) do
+ActiveRecord::Schema.define(:version => 20140428162326) do
 
   create_table "homes", :force => true do |t|
     t.string   "games"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "to_user_id"
+    t.integer  "to_user"
+    t.string   "title"
+    t.text     "message"
+    t.string   "type"
+    t.boolean  "read"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

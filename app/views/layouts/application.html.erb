@@ -12,20 +12,26 @@
        <div class="loginstatus loggedin">       
         Hello, <%= current_user.name %> 
         <%= link_to 'logout', session_path(0), method: :delete %>
+        <%= link_to "Messages/challenges", user_messages_path(current_user) %>
+        <%= link_to "Show your games in progress:", user_path(current_user) %>
         </div>
-<% else %>
+ <% else %>
       <div class="loginstatus loggedout"> 
         <%= link_to 'Sign in', new_session_path %>
         <%= link_to 'Sign up', new_user_path %>
         </div>
       <% end %>
 
+<nav class="all">
 <ul>
   <li><a href="/">back to game centre</a></li>
   <li><%= link_to "Play  vs computer", new_ttt_path(computer: :true) %></li>
   <li><%= link_to "Play vs Player 2 (same computer)", new_ttt_path %></li>
-<ul>
+  <li><%= link_to "Challenge another player to a game", users_path %></li>
 
+  
+<ul>
+</nav>
 
 <div id="container">
           <% flash.each do |name, msg| %>

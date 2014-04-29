@@ -1,11 +1,30 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$color: 509090;
+
+ #ff7373;
+      right: -2%;
+     #dbf970; #63add0;
+      
+
+
 *{
   box-sizing:border-box;
 }
+
+
+@media screen and (max-width: 460px) {
+  background: $color;
+}
+
 body{
   margin: 20px;
+}
+
+nav a {
+  background: $color;
+  padding: 10px;
 }
 
 .game_container {
@@ -25,7 +44,13 @@ body{
   margin: 0px;
   border-collapse: true;
 }
-.game_container form > div {
+
+.game_container  a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.game_container form > div  {
   position: absolute;
 }
 .nought {

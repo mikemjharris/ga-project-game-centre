@@ -12,13 +12,10 @@
 
 
 <div class="game_container">
-
-
     <% (0...9).each do |i| %>
       <div class="<%= box_class(i) %>">
-        <% if box_class(i) == "blank" && @ttt.winner.nil? %>
-          <%= button_to 'Move', ttt_path(@ttt, :move => 2 ** (8-i)), :method => :put  %>
-        <% end %>
+             <%= link_to '', ttt_moves_path(@ttt, :move => 2 ** (8-i)), :method => :post  %>
+        
       </div>
     <% end %>
      

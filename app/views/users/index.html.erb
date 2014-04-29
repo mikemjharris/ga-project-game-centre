@@ -1,0 +1,18 @@
+<h1>Availiable Users to challenge</h1>
+
+<ul>
+<% @users.each do |user| %>
+  <% unless user == current_user %>
+  
+    <% if @to_message_ids.include?(user.id) %>
+      <li><%= user.name %>: Challenge sent - check back soon for a response</li>
+    <% else %>
+      <li><%= user.name %><%= link_to 'challenge user',  user_messages_path(user), method: :post %></li>
+    <% end %>
+  <% end %>
+<% end %>
+</ul>
+
+
+
+

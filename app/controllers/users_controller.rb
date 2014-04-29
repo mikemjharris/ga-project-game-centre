@@ -1,7 +1,19 @@
 class UsersController < ApplicationController
 
+  def index 
+      @users = User.all
+      @to_message_ids = current_user.messages.collect {|message| message.to_user_id}
+
+  end
+  def games
+
+
+  end
+
  
   def show
+    @user = current_user
+    @live_games = Ttt.where('live_game = ? and player_one_id = ? or player_two_id = ?', true, @user.id, @user.id)
     
 
   end

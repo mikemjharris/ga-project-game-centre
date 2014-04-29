@@ -1,27 +1,16 @@
 module TttsHelper
 
   def box_class(i)
-      noughts = "%09b" % @ttt.player_one_position
-      crosses = "%09b" % @ttt.player_two_position
-      
-      
-      if noughts[i] == "1"
-          return "nought"
-      elsif crosses[i] == "1"
-          return "cross"
-      else 
-          return "blank"
-      end
-  end
+    noughts = @ttt.moves.where(player: 1).collect{ |move| move.player_move}
+    crosses = @ttt.moves.where(player: 2).collect{ |move| move.player_move}
 
-
-
-  def drawsymbol(box, position)
-    if position < box
-      return false
-    elsif position % 2 == 1 
-      return true
-    end  
+    if noughts.include?(2**(8-i)) 
+        return "nought"
+    elsif crosses.include?(2**(8-i)) 
+        return "cross"
+    else 
+        return "blank"
+    end
   end
 
   def winner_name
