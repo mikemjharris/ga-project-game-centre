@@ -6,7 +6,7 @@ class Move < ActiveRecord::Base
   validate :player_move_valid 
   validate :no_winner
   validate :availiable_moves
-  validate :check_user
+  # validate :check_user
 
   def player_move_valid
     errors.add(:base, "Already made that move")  if  self.player_moves.include?(self.player_move) 
@@ -25,11 +25,11 @@ class Move < ActiveRecord::Base
     errors.add(:base, "That isn't a square on the board.")  unless  availiable_moves.include?(self.player_move)     
   end
 
-  def check_user
-    ttt =  Ttt.find(self.ttt_id)
-    unless ttt.player_one == current_user || ttt.player_two == current_user 
-      errors.add(:base, "Not a valid user")
-    end
-  end
+  # def check_user
+  #   ttt =  Ttt.find(self.ttt_id)
+  #   unless ttt.player_one == current_user || ttt.player_two == current_user 
+  #     errors.add(:base, "Not a valid user")
+  #   end
+  # end
 
 end

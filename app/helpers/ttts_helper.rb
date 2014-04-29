@@ -13,7 +13,13 @@ module TttsHelper
     end
   end
 
-  
+  def errors
+    if params[:errors].nil?
+        return []
+    else
+      return params[:errors]
+    end
+  end
 
   def winner_name
     case @ttt.winner

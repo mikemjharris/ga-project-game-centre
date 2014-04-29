@@ -10,6 +10,9 @@
   <% end %>
 <% end %>
 
+<% errors.each do |error| %>
+    <p><%= error %></p>
+<% end %>
 
 <div class="game_container">
     <% (0...9).each do |i| %>
