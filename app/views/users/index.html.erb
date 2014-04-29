@@ -1,17 +1,28 @@
 <h1>Availiable Users to challenge</h1>
 
-<ul>
-<% @users.each do |user| %>
-  <% unless user == current_user %>
-  
-    <% if @to_message_ids.include?(user.id) %>
-      <li><%= user.name %>: Challenge sent - check back soon for a response</li>
-    <% else %>
-      <li><%= user.name %><%= link_to 'challenge user',  user_messages_path(user), method: :post %></li>
-    <% end %>
+<table>
+  <th>
+    User
+  </th>
+  <th>
+    Challenge Status
+  </th>
+  <% @users.each do |user| %>
+    <% unless user == current_user %>
+      <tr>
+        <td><%= user.name %>:</td> 
+      <% if Ttt.live_game(user.id, current_user.id).any? %>
+            <td><%= link_to 'Game in progress', ttt_path(Ttt.live_game(user.id, current_user.id).last) %></td>
+
+      <% elsif @to_message_ids.include?(user.id) %>
+        <td>Challenge sent - check back soon for a response</td>
+      <% else %>
+        <td><%= link_to 'challenge user',  user_messages_path(user), method: :post %></td>
+      <% end %>
+      </tr>
   <% end %>
 <% end %>
-</ul>
+</table>
 
 
 

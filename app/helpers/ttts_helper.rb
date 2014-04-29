@@ -13,6 +13,8 @@ module TttsHelper
     end
   end
 
+  
+
   def winner_name
     case @ttt.winner
      when 1

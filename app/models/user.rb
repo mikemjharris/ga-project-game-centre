@@ -14,4 +14,10 @@ class User < ActiveRecord::Base
   validate :email, prescence: true
   validate :email, uniqueness: true
 
+
+   
+ 
+ 
+
+
 end

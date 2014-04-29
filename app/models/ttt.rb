@@ -8,6 +8,18 @@ class Ttt < ActiveRecord::Base
   belongs_to :player_one, class_name: 'User'
   belongs_to :player_two, class_name: 'User'
 
+
+    def self.live_games(user_id)
+        where('ttts.live_game = ? and (ttts.player_one_id = ? or player_two_id = ?)', true, user_id, user_id)
+    end
+    
+
+    def self.live_game(user_id1, user_id2)
+      where('ttts.live_game = ? and ((ttts.player_one_id = ? and ttts.player_two_id = ?) or (ttts.player_one_id = ? and ttts.player_two_id = ?))', 
+        true, user_id1, user_id2, user_id2, user_id1)    
+    end
+
+
     def check_user_valid(current_user)
       if self.player_one == current_user && self.player_two.nil?
         true
