@@ -5,15 +5,16 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
+ <nav>
  <% if current_user %>
        <div class="loginstatus loggedin">       
         Hello, <%= current_user.name %> 
-        <%= link_to 'logout', session_path(0), method: :delete %>
-        <%= link_to "Messages/challenges", user_messages_path(current_user) %>
-        <%= link_to "Show your games in progress:", user_path(current_user) %>
+        <%= link_to 'Logout', session_path(0), method: :delete %>
+        <%= link_to "Challenges", user_messages_path(current_user) %>
+        <%= link_to "In progress", user_path(current_user) %>
         </div>
  <% else %>
       <div class="loginstatus loggedout"> 
@@ -25,9 +26,12 @@
 <nav class="all">
 <ul>
   <li><a href="/">back to game centre</a></li>
-  <li><%= link_to "Play  vs computer", new_ttt_path(computer: :true) %></li>
-  <li><%= link_to "Play vs Player 2 (same computer)", new_ttt_path %></li>
-  <li><%= link_to "Challenge another player to a game", users_path %></li>
+  <li>
+      New game
+        <li><%= link_to "Play  vs computer", new_ttt_path(computer: :true) %></li>
+        <li><%= link_to "Play vs Player 2 (same computer)", new_ttt_path %></li>
+        <li><%= link_to "Challenge another player to a game", users_path %></li>
+  </li>
 
   
 <ul>

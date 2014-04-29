@@ -1,5 +1,6 @@
 <h1>Live games</h1>
 
+
 <% @live_games.each do |game| %>
 
   <p><%= game.id %><%= link_to "Live game", ttt_path(game) %>

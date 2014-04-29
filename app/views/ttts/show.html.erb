@@ -13,10 +13,12 @@
 
 <div class="game_container">
     <% (0...9).each do |i| %>
-      <div class="<%= box_class(i) %>">
-             <%= link_to '', ttt_moves_path(@ttt, :move => 2 ** (8-i)), :method => :post  %>
-        
+     <div class="box<%= i %>">
+        <%= link_to '', ttt_moves_path(@ttt, :move => 2 ** (8-i)), :method => :post  %>
+      <div class="<%= box_class(i) %> piece">
+             
       </div>
+    </div>
     <% end %>
      
 </div>  

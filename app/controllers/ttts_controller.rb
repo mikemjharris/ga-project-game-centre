@@ -1,5 +1,5 @@
 class TttsController < ApplicationController
-
+ 
   def index
 
   end
@@ -17,6 +17,7 @@ class TttsController < ApplicationController
     new_game = Ttt.new({:player_one => current_user,
       :player_two_id => params[:player_two].to_i,
      :next_player =>  1,
+     :live_game => true
 
     })
 

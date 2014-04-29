@@ -1,16 +1,21 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$color: 509090;
 
+
+$color: #dbf970;
+$color_warning: #ff7373;
+$color_board: #ff7373;
+/**
  #ff7373;
       right: -2%;
      #dbf970; #63add0;
-      
+   **/   
 
 
 *{
   box-sizing:border-box;
+  font-family: 'Comfortaa', 'cursive';
 }
 
 
@@ -22,16 +27,32 @@ body{
   margin: 20px;
 }
 
-nav a {
+li {
+  
+  padding: 0;
+  margin: 0;
+  }
+
+
+.loginstatus a, nav a {
+  display: inline-block;
   background: $color;
   padding: 10px;
+  color: black;
+  text-decoration: none;
+  &:hover {
+      color: white;
+  }
 }
 
+.loginstatus a {
+    border: 1px solid $color_warning;
+  }
+
 .game_container {
-   font-size: 0;
+  font-size: 0;
   width: 600px;
   height: 600px;
-  /*border: 1px solid black;*/
   padding: 0px;
   display: inline-block;
 }
@@ -40,27 +61,86 @@ nav a {
   width: percentage(1/3);
   height: percentage(1/3);
   display: inline-block;
-  border: 1px solid black;
   margin: 0px;
   border-collapse: true;
 }
 
 .game_container  a {
+  position: absolute;
   display: inline-block;
   width: 100%;
   height: 100%;
+  background: none;
 }
 .game_container form > div  {
   position: absolute;
 }
+
+.piece {
+  width: 90%;
+  height:90%;
+  margin: 5%;
+}
+
 .nought {
-  background: red;
+  border: 2px solid red;
+  border-radius: 50%;
 }
 
 .cross {
-  background: yellow;
+  width: 0;
+  height: 0;
+  border-bottom: 90px solid black;
+  border-top: 90px solid black;
+  border-left: 90px solid yellow;
+  border-right: 90px solid yellow;
+  
 }
 
 .blank {
-  background: gray;
+  background: none;
 }
+
+$border_box: 1px solid green;
+.box0 {
+  border-right: $border_box;
+  border-bottom: $border_box;
+  }
+.box1 {
+  border-right: $border_box;
+  border-bottom: $border_box;
+  border-left: $border_box;
+  }
+.box2 {
+  border-left: $border_box;
+  border-bottom: $border_box;
+  }
+.box3 {
+  border-right: $border_box;
+  border-top: $border_box;
+  border-bottom: $border_box;
+  }
+.box4 {
+  border: $border_box;
+  }
+.box5 {
+  border-left: $border_box;
+  border-top: $border_box;
+  border-bottom: $border_box;
+  }
+.box6 {
+  border-right: $border_box;
+  border-top: $border_box;
+  }
+.box7 {
+  border-left: $border_box;
+  border-right: $border_box;
+  border-top: $border_box;
+  }
+.box8 {
+  border-left: $border_box;
+  border-top: $border_box;
+  }
+
+
+

@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @live_games = Ttt.where('live_game = ? and player_one_id = ? or player_two_id = ?', true, @user.id, @user.id)
+    # @live_games = Ttt.where('live_game = ? and player_one_id = ?', true, @user.id)
     
 
   end
