@@ -11,7 +11,7 @@ SirrahGames::Application.routes.draw do
   resources :users 
   resources :sessions
 
-
+  get 'users/:id/scoreboard', to:  'users#scoreboard', as: 'scoreboard'
   root to: "homes#index" 
 
   #:path => "tictactoe"

@@ -8,15 +8,16 @@ class Move < ActiveRecord::Base
   validates :player_move, presence: true
   validates :ttt_id, presence: true
 
-  validate :player_move_valid 
   validate :no_winner
   validate :availiable_moves
   validate :player_valid
+  validate :player_move_valid 
+  
   
   private
 
   def player_move_valid
-    errors.add(:base, "Already made that move")  if  player_moves.include?(self.player_move) 
+    errors.add(:base, "That move has already been made")  if  player_moves.include?(self.player_move) 
   end  
 
   def player_moves
@@ -24,7 +25,7 @@ class Move < ActiveRecord::Base
   end
 
   def no_winner
-    errors.add(:base, "Sorry - this game has finished") unless Ttt.find(self.ttt_id).live_game
+    errors.add(:base, "This game has finished") unless Ttt.find(self.ttt_id).live_game
   end
   
   def availiable_moves
@@ -40,8 +41,12 @@ class Move < ActiveRecord::Base
       if ttt.check_user_playing?(self.user_id)
         if ttt.next_player == 1 
           errors.add(:base, "It's not your turn") unless ttt.player_one_id == self.user_id       
-        elsif ttt.next_player == 2
-            true
+        else 
+          if ttt.player_two.nil?
+             errors.add(:base, "It's not your turn") unless ttt.player_one_id == self.user_id    
+          else
+            errors.add(:base, "It's not your turn") unless ttt.player_two_id == self.user_id    
+          end
         end 
       else
         errors.add(:base, "This isn't your game.")    

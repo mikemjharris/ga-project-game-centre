@@ -14,7 +14,6 @@
         Hello <%= current_user.name.capitalize %> 
 
         <%= link_to 'Logout', session_path(0), method: :delete, :class => "logout"  %>
-        <%= link_to 'Scoreboard', scoreboard_path(current_user) %>
          <!-- link_to "Challenges", user_messages_path(current_user) -->
         
         <!-- <a href="/">Back to game centre</a> -->
@@ -28,9 +27,7 @@
 
 </nav>
 
-<% unless @noleftmenu %>
-  <%= render partial: 'layouts/leftmenu' %>  
-<% end %>
+
 
 
 

@@ -1,6 +1,40 @@
 
 
-
-
+<div class="left_menu">
+<ul>
+  
+  <li>
+      <b>Play Tic Tac Toe</b></li>
+        <li><%= link_to "Play  vs computer", new_ttt_path(computer: :true) %></li>
+        <li><%= link_to "Play vs Player 2", new_ttt_path %></li>
+        <li><%= link_to "Challenge", users_path %></li>
+       
+        <li><%= link_to user_path(current_user) do %>
+              <div>In progress</div>
+              <% end %>
+               
+               
+        </li>
+  </li>
+<ul>
+    <% if errors.any? %>
+      <div class="errors">
+         
+          <p><%= errors[:base].first %></p>
+      </div>
+      <% end %>
+    <% if flash.any? %>
+        <div class="flash">
+          <% if flash[:welcome] %>
+                 <p><%=  flash[:welcome] %></p><br />
+                 <p><%= welcome_message %></p>
+            <% else %>
+              <% flash.each do |name, msg| %>
+                <%= content_tag :div, msg, :id => "flash_#{name}" %>
+              <% end %>
+            <% end %>
+        </div>
+    <% end %>
+</div>
 
 

@@ -21,4 +21,10 @@ module UsersHelper
           return "You vs Player Two (same computer)"
       end
   end
+
+  def nos_live_games
+      @live_games = Ttt.where("(player_one_id = ? or player_two_id = ?) and live_game = ?", current_user.id, current_user.id, true).count
+
+  end
+
 end

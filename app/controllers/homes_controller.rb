@@ -3,6 +3,7 @@ class HomesController < ApplicationController
   
   def index
      if current_user
+        @noleftmenu = true
         render 'index', layout: 'application'
 
      else 

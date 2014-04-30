@@ -1,0 +1,47 @@
+<h1>Scoreboard</h1>
+<table class="live_games">
+  <tr>
+  <th>Opponent</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th>
+</tr>
+<tr>
+    <td>All</td>
+    <td><%= @games_vs_all %></td>
+    <td><%= @games_vs_all_won %></td>
+    <td><%= @games_vs_all_drawn %></td>
+    <td><%= @games_vs_all_lost %></td>
+
+  </tr>
+  <tr>
+    <td>Computer</td>
+    <td><%= @games_vs_computer %></td>
+    <td><%= @games_vs_computer_won %></td>
+    <td><%= @games_vs_computer_drawn %></td>
+    <td><%= @games_vs_computer_lost %></td>
+  </tr>
+   <tr>
+    <td>Player Two</td>
+    <td><%= @games_vs_player_two %></td>
+    <td><%= @games_vs_player_two_won %></td>
+    <td><%= @games_vs_player_two_drawn %></td>
+    <td><%= @games_vs_player_two_lost %></td>
+  </tr>
+  <tr>
+    <td>Another User</td>
+    <td><%= @games_vs_user %></td>
+    <td><%= @games_vs_user_won %></td>
+    <td><%= @games_vs_user_drawn %></td>
+    <td><%= @games_vs_user_lost %></td>
+  </tr>
+  
+  
+</table>
+ <%=  %> <%= link_to "#{@live_games} live games", user_path(@user) %>
+
+    
+  
+
+
+
+
+
+
