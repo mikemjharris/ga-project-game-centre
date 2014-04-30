@@ -24,9 +24,14 @@ class Ttt < ActiveRecord::Base
         true, user_id1, user_id2, user_id2, user_id1)    
     end
 
+    def check_user_playing?(current_user_id)
+      if self.player_one_id == current_user_id || self.player_two_id == current_user_id
+        true
+      end
+    end
 
     def check_user_a_player?(current_user_id)
-
+  
       if (self.player_one_id == current_user_id) && (self.player_two_id.nil?)
         return true
  

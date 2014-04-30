@@ -1,12 +1,4 @@
-<% if @ttt.winner %>
-  <p><%= winner_name %></p>
-<% else %>
-  <% if @ttt.player_name %>
-    <p><%= @ttt.player_name %>s turn</p>
-  <% else %>
-  <p>Player<%= @ttt.next_player %>s turn</p>
-  <% end %>
-<% end %>
+
 
 
 
@@ -17,9 +9,12 @@
   <div class="<%= active_player(2) %> player_two"><%= render :partial => '/layouts/cross' %><%= player_two %></div>
 </div>
 
+<% if @ttt.winner %>
+  <div class="winner"><%= winner_name %></div>
+<% end %>
 
 <div class="game_container">
-
+  
     <%= render partial: '/ttts/board' %>
     
          

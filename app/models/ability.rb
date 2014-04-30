@@ -14,8 +14,8 @@ class Ability
             can :new, Ttt   #authorise create a new game
 
             can :show,  Ttt do |ttt|
-                ttt.check_user_a_player?(user.id)
-                       
+                ttt.check_user_playing?(user.id)
+
             end
 
             

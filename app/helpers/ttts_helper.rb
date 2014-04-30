@@ -30,7 +30,7 @@ module TttsHelper
         name = "Game tied." 
      when 1
       if @ttt.player_one.name
-        name = @ttt.player_one.name + " won"
+        name = @ttt.player_one.name.capitalize + " won"
       else 
         name = "Player one won"
       end
@@ -42,7 +42,7 @@ module TttsHelper
           name = "Player two won"
         end
       else 
-        name = @ttt.player_two.name + " won"
+        name = @ttt.player_two.name.capitalize + " won"
       end   
     end  
           
@@ -58,7 +58,7 @@ module TttsHelper
 
   def player_two 
     if @ttt.player_two
-      @ttt.player_two.name.capitaplize
+      @ttt.player_two.name.capitalize
     elsif @ttt.computer
       "Computer"
     else

@@ -35,13 +35,16 @@ class Move < ActiveRecord::Base
   def player_valid
       # last_move =  Move.where(ttt_id: self.ttt_id).order("created_at").last
       ttt = self.ttt
+      # last_move = ttt.moves.order(:created_at).last
 
-      if ttt.check_user_a_player?(self.user_id)
-      #   unless ttt.player_two_id || ttt.computer
-      #     errors.add(:base, "It's not your turn") if last_move.user_id == self.user_id
-      #   end
+      if ttt.check_user_playing?(self.user_id)
+        if ttt.next_player == 1 
+          errors.add(:base, "It's not your turn") unless ttt.player_one_id == self.user_id       
+        elsif ttt.next_player == 2
+            true
+        end 
       else
-        errors.add(:base, "It's not your turn")    
+        errors.add(:base, "This isn't your game.")    
       end
 
   end

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def index 
       @users = User.all
       @to_message_ids = current_user.messages.collect {|message| message.to_user_id}
-
+      
   end
 
  

@@ -24,6 +24,8 @@ class TttsController < ApplicationController
 
     if params[:player_two]
       @ttt.player_two_id = params[:player_two].to_i
+      Message.where(to_user_id: current_user.id, user_id: params[:player_two].to_i).each {|message| message.delete}
+      Message.where(to_user_id: current_user.id, user_id: params[:player_two].to_i).each {|message| message.delete}
     end
 
     if params[:computer]

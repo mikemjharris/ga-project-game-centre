@@ -4,6 +4,7 @@
 
 
 $color: #dbf970;
+$color_light: #EBFCB0;
 $color_warning: #ff7373;
 $color_board: #ff7373;
 /**
@@ -69,8 +70,9 @@ a:hover {
 main {
   width: 80%;
   max-width: 600px;
-  border: 1px solid black;
+  
   margin: 0 auto; 
+  position: relative;
 }
 
 
@@ -116,6 +118,57 @@ li {
 
 .loginstatus a {
     border: 1px solid $color_warning;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .live_games {
+       width: 400px;
+       margin: 0 auto;
+      a {
+        text-align: center;
+        padding: 10px;
+        display: inline-block;
+        width: 100%;
+      }
+      li:nth-child(odd) {
+        background: $color_light;
+      }
+}
+
+  .challenge {
+    margin: 0 auto;
+    text-align: center;
+       th {
+        font-size: 1.2em;
+        border-bottom: 1px solid black;
+      }
+   /* th:first-child, td:first-child{
+      text-align: right;
+      padding-right: 10px;;
+      } 
+      th:last-child, td:last-child{
+      text-align: left;
+      padding-left: 10px;
+      } */
+      tr:nth-child(even) {
+        background: $color_light;
+      }
+
+     td {
+      width: 200px;
+      padding: 5px;
+      a {
+        width: 100%;
+        background: none;
+      }
+      a:hover{
+        background: none;
+      }
+     
+    }
   }
 
   .players {
@@ -179,6 +232,19 @@ li {
 }
 .game_container form > div  {
   position: absolute;
+}
+
+.winner {
+  position: absolute;
+  top: 50%;
+  left: 100px;
+  display: inline-block;
+  font-size: 2em;
+  text-align: center;
+  z-index: 100;
+  width: 400px;
+  background: white;
+  padding: 20px;
 }
 
 .showpiece {

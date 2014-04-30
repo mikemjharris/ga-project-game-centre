@@ -7,8 +7,6 @@ class MessagesController < ApplicationController
   def index
     @to_messages = current_user.messages
     @from_messages = Message.where(to_user_id: current_user)
-
-
   end
 
   def show
@@ -41,12 +39,16 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+
     Message.find(params[:id].to_i).destroy
 
     redirect_to user_messages_path
   end
 
-
+  def accept_challenge
+     raise 
+     redirect_to
+  end
 
 
 

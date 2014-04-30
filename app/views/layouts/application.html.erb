@@ -11,11 +11,12 @@
  <nav>
  <% if current_user %>
        <div class="loginstatus loggedin">       
-        Hello, <%= current_user.name %> 
-        <%= link_to 'Logout', session_path(0), method: :delete %>
-        <%= link_to "Challenges", user_messages_path(current_user) %>
-        <%= link_to "In progress", user_path(current_user) %>
-        <a href="/">Back to game centre</a>
+        Hello <%= current_user.name.capitalize %> 
+
+        <%= link_to 'Logout', session_path(0), method: :delete, :class => "logout"  %>
+         <!-- link_to "Challenges", user_messages_path(current_user) -->
+        
+        <!-- <a href="/">Back to game centre</a> -->
         </div>
  <% else %>
       <div class="loginstatus loggedout"> 
@@ -30,17 +31,19 @@
 <ul>
   
   <li>
-      Tic Tac Toe Menu</li>
+      <b>Play Tic Tac Toe</b></li>
         <li><%= link_to "Play  vs computer", new_ttt_path(computer: :true) %></li>
         <li><%= link_to "Play vs Player 2 (same computer)", new_ttt_path %></li>
-        <li><%= link_to "Challenge another player to a game", users_path %></li>
+        <li><%= link_to "Challenge", users_path %></li>
+        <li><%= link_to "In progress", user_path(current_user) %></li>
   </li>
 <ul>
-
-    <p>Alerts</p>
-    <% errors.each do |error| %>
-    <p><%= error %></p>
-<% end %>
+    <% if errors.any? %>
+      <p>Alerts</p>
+      <% errors.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    <% end %>
     <div id="container">
           <% flash.each do |name, msg| %>
             <%= content_tag :div, msg, :id => "flash_#{name}" %>
