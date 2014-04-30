@@ -13,7 +13,6 @@ class Ttt < ActiveRecord::Base
 
   def player_setup
     errors.add(:base, "Can't have a computer player and player two") if self.computer && self.player_two_id
-
   end
 
     def self.live_games(user_id)
@@ -26,16 +25,18 @@ class Ttt < ActiveRecord::Base
     end
 
 
-    def check_user_valid(current_user)
+    def check_user_a_player?(current_user_id)
 
-      if self.player_one == current_user && self.player_two.nil?
+      if (self.player_one_id == current_user_id) && (self.player_two_id.nil?)
         return true
-      else
+ 
         case self.next_player 
           when 1
-            return true if self.player_one == current_user
+            return true if self.player_one_id == current_user_id
           when 2  
-            return true if self.player_two == current_user
+            return true if self.player_two_id == current_user_id
+          else 
+            return false
         end
       end
     end
@@ -48,22 +49,32 @@ class Ttt < ActiveRecord::Base
       end 
     end
 
-    def update_status
+    def update_status(type)
       self.live_game = false
-      self.winner = self.player
+      if type == "win"
+        self.winner = self.player
+      else 
+        self.winner = 0
+      end
       self.save
+    end
+
+    def check_draw
+      true if self.moves.count == 9
     end
 
     def update_board
       if self.check_solution 
-        self.update_status
+        self.update_status("win")
+      elsif self.check_draw
+        self.update_status("draw")
       elsif self.computer && self.next_player == 2
         computer_move = self.computer_move
-        self.moves.create(player_move: computer_move, player: 2) 
+        self.moves.build(player_move: computer_move, player: 2, user_id: self.player_one_id) 
         self.next_player = 1
         self.save
          if self.check_solution 
-          self.update_status
+          self.update_status("win")
         end  
       end
     end

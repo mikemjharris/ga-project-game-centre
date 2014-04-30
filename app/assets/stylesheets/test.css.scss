@@ -27,6 +27,15 @@ body{
   height: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: $color_warning;
+}
+
 .home {
   width: 80%;
   max-width: 300px;
@@ -38,9 +47,41 @@ body{
   margin: 0 auto;
 }
 
-input[type="text"] {
-  background: red;
+.left_menu {
+  text-align: center;
+  width: 15%;
+  display: inline-block;
+  position: absolute;
+  top: 20%;
+  margin-left: 5%;
+
+  a {
+    padding: 10px;
+    max-width: 200px;
+    width: 90%;
+    display: inline-block;
+    text-align: center;
+    margin: 10px 0;
+    background: $color;
+  }
+}
+
+main {
+  width: 80%;
+  max-width: 600px;
+  border: 1px solid black;
+  margin: 0 auto; 
+}
+
+
+
+input[type="text"], input[type="password"] {
   padding: 10px;
+  text-align: center;
+}
+
+.field {
+  margin: 5px 0;
 }
 
 .logo {
@@ -50,6 +91,10 @@ input[type="text"] {
 .home a {
   width: 100px;
   margin: 5px;
+}
+
+ul {
+  -webkit-padding-start: 0px;
 }
 
 li {
@@ -73,12 +118,46 @@ li {
     border: 1px solid $color_warning;
   }
 
+  .players {
+    font-size: 2em;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 0;
+    .vs, .player_one, .player_two {
+      font-size: 2rem;
+      width: 40%;
+      display: inline-block;
+      padding: 10px 0;
+    }  
+    .vs {
+      width: 10%;
+    }
+  }
+
+  .player_one .showpiece {
+    margin-left: 20px;
+  }
+  .player_two .showpiece {
+    margin-right: 20px;
+    
+  }
+
+  .player {
+    
+    border: 2px solid #ff7373;
+    .showpiece{
+      opacity: 1;
+    }
+  }
+
+  
 .game_container {
   font-size: 0;
   width: 600px;
   height: 600px;
   padding: 0px;
   display: inline-block;
+
 }
 .game_container > div{
   font-size: 1rem; 
@@ -101,6 +180,17 @@ li {
 .game_container form > div  {
   position: absolute;
 }
+
+.showpiece {
+  display:inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0%;
+  position: relative;
+  opacity: 0;
+}
+
+
 
 .piece {
   width: 90%;

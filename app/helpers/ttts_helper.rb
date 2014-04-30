@@ -26,21 +26,51 @@ module TttsHelper
 
   def winner_name
     case @ttt.winner
+     when 0
+        name = "Game tied." 
      when 1
       if @ttt.player_one.name
-        name = @ttt.player_one.name
+        name = @ttt.player_one.name + " won"
       else 
-        name = "Player one"
+        name = "Player one won"
       end
      when 2
       if @ttt.player_two.nil?
-        name = "Player two"
+        if @ttt.computer
+          name = "The computer won"
+        else
+          name = "Player two won"
+        end
       else 
-        name = @ttt.player_two.name
+        name = @ttt.player_two.name + " won"
       end   
     end  
           
   end 
 
+  def player_one
+    if @ttt.player_one.name
+      @ttt.player_one.name.capitalize
+    else 
+      "Player one"
+    end
+  end
 
+  def player_two 
+    if @ttt.player_two
+      @ttt.player_two.name.capitaplize
+    elsif @ttt.computer
+      "Computer"
+    else
+      "Player Two"
+    end
+  end
+
+  def active_player(i)
+      if @ttt.winner == i
+          "player"
+      else
+          "player" if @ttt.next_player == i && @ttt.winner.nil?
+      end
+  end
 end

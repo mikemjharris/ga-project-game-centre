@@ -1,7 +1,5 @@
-<h2>Tic Tac Toe</h2>
-
 <% if @ttt.winner %>
-  <p><%= winner_name %> you won!</p>
+  <p><%= winner_name %></p>
 <% else %>
   <% if @ttt.player_name %>
     <p><%= @ttt.player_name %>s turn</p>
@@ -10,24 +8,21 @@
   <% end %>
 <% end %>
 
-<% errors.each do |error| %>
-    <p><%= error %></p>
-<% end %>
+
+
+<div class="players">
+
+  <div class="<%= active_player(1) %> player_one"><%= player_one %><%= render :partial => '/layouts/nought' %></div>
+  <div class="vs">Vs.</div>
+  <div class="<%= active_player(2) %> player_two"><%= render :partial => '/layouts/cross' %><%= player_two %></div>
+</div>
+
 
 <div class="game_container">
-    <% (0...9).each do |i| %>
-     <div class="box<%= i %>">
-        <%= link_to '', ttt_moves_path(@ttt, :move => 2 ** (8-i)), :method => :post  %>
-      <div class="<%= box_class(i) %> piece">
-             <svg height="100%" width="100%" >
-                <line x1="0" y1="0" x2="100%" y2="100%"  />
-                <line x1="100%" y1="0" x2="0" y2="100%"  />
-            <!-- Sorry, your browser does not support inline SVG. -->
-            </svg>
-      </div>
-    </div>
-    <% end %>
-     
+
+    <%= render partial: '/ttts/board' %>
+    
+         
 </div>  
 
 

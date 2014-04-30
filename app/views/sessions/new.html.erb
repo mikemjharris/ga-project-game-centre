@@ -1,18 +1,21 @@
 
-   <table>
-   <tr> 
+ <h1>New user</h1>
+
   <%= form_tag sessions_path do %>
-    
-      <td>  <%= label_tag :email %></td>
-      <td><%= text_field_tag :email, params[:email] %></td>
-    
-   </tr> 
-    <tr>
-      <td><%= label_tag :password %></td>
-      <td><%= password_field_tag :password %></td>
-    </tr>
-    <tr>
-      <td></td><td><%= submit_tag "Log in" %><td>
-    </tr>
-  </table>
+      <div class="field">
+      <%= label_tag :email %><br /><br />
+      <%= text_field_tag :email, params[:email] %>
+      </div>
+   
+      <div class="field">
+      <%= label_tag :password %><br />
+      <%= password_field_tag :password %>
+      </div>
+
+      <div class="field">
+      <%= submit_tag "Log in" %>
+      </div>
+ 
   <% end %>
+
+  <%= link_to 'Back', root_path %>

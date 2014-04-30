@@ -6,7 +6,7 @@ class HomesController < ApplicationController
         render 'index', layout: 'application'
 
      else 
-        render 'index', layout: 'home'
+        render 'login_index', layout: 'home'
 
       end
   end

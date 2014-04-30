@@ -1,4 +1,5 @@
 class TttsController < ApplicationController
+  load_and_authorize_resource
   
   
   def index
@@ -7,6 +8,7 @@ class TttsController < ApplicationController
 
   def show
     @ttt = Ttt.find(params[:id])
+     
   end
 
   def edit
@@ -15,19 +17,21 @@ class TttsController < ApplicationController
 
 
   def new
-    new_game = Ttt.new({:player_one => current_user,
-      :player_two_id => params[:player_two].to_i,
+    @ttt = Ttt.new({:player_one => current_user,
      :next_player =>  1,
      :live_game => true
-
     })
 
-    if params[:computer]
-      new_game.computer = true
+    if params[:player_two]
+      @ttt.player_two_id = params[:player_two].to_i
     end
 
-    new_game.save
-    redirect_to ttt_path(new_game)
+    if params[:computer]
+      @ttt.computer = true
+    end
+
+    @ttt.save
+    redirect_to ttt_path(@ttt)
   end
 
 

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # layout "home"
 
   def index 
       @users = User.all
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
 
   def new
      @user = User.new
+      render :layout => 'home'
   end
 
 
