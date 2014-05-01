@@ -1,5 +1,9 @@
 module HomesHelper
   def welcome_message
+      
+    if current_user.moves.any?
+     
+    
       last_message =  current_user.moves.order(:created_at).last 
       timediff = (Time.now - last_message.created_at).to_i
       
@@ -10,5 +14,8 @@ module HomesHelper
       else
         return "It's been a while."
       end
+    else
+     return "You haven't played a game yet - jump right in!"
+    end
   end  
 end

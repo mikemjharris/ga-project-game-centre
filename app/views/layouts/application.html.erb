@@ -5,16 +5,19 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+  
+  <link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
  <nav>
  <% if current_user %>
        <div class="loginstatus loggedin">       
-        Hello <%= current_user.name.capitalize %> 
+        <p>Hello <%= current_user.name.capitalize %> </p>
 
         <%= link_to 'Logout', session_path(0), method: :delete, :class => "logout"  %>
-        <%= link_to 'Settings', user_path(current_user), :class => "logout"  %>
+        <%= link_to 'Settings', edit_user_path(current_user), :class => "logout"  %>
+
+         <%= image_tag current_user.image_url(:thumb), class: "profile-pic" if current_user.image? %>
         
         </div>
  <% else %>

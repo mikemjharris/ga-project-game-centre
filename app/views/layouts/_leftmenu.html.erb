@@ -32,7 +32,7 @@
                  <p><%= welcome_message %></p>
             <% else %>
               <% flash.each do |name, msg| %>
-                <%= content_tag :div, msg, :id => "flash_#{name}" %>
+               <%= content_tag :p, msg, :id => "flash_#{name}" %>
               <% end %>
             <% end %>
         </div>

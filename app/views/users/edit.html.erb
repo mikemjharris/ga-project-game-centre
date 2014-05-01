@@ -18,12 +18,9 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="image">
-    <%= f.label :image %><br />
-    <%= f.text_field :image %>
-  </div>
+  
 
-  <%= image_tag @user.image_url() if @user.image? %>
+
   
     <%= f.label :image %>
     <%= f.file_field :image%>
@@ -31,6 +28,7 @@
     <%= f.label :scheme %><br />
     <%= f.text_field :scheme %>
   </div>
+ 
   <div class="actions">
     <%= f.submit %>
   </div>

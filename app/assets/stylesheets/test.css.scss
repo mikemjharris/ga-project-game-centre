@@ -20,6 +20,50 @@ $button_radius: 7px;
   font-family: 'Comfortaa', 'cursive';
 }
 
+
+.home input[type="password"], .home input[type="text"] {
+  font-size: 1.5em;
+  max-width: 220px;
+  width: 90%;
+}  
+
+
+.home a , input[type="button"], input[type="submit"] {
+  font-weight: bold;
+  align-items: flex-start;
+  text-align: center;
+  cursor: default;
+  color: black;
+  padding: 5px 20px;
+  border: none;
+  border-radius: $button_radius;
+  padding: 10px;
+    max-width: 220px;
+    width: 90%;
+  background-color: $color;
+  &:hover {
+    color: $color_warning;
+      }
+}
+
+.home h1 {
+  font-size: 1.5em;
+}
+.home a { padding: 10px;
+    max-width: 220px;
+    width: 90%;
+    display: inline-block;
+    text-align: center;
+    margin: 10px 0;
+    background: $color;
+  }
+
+
+
+.field_with_errors input[type="text"], .field_with_errors input[type="password"]{
+  background: $color_warning;
+}
+
 b {
   font-weight: bold;
   font-size: 1.2em;
@@ -63,7 +107,7 @@ main .left_menu {
   display: inline;
   b {
     font-size: 1.5em;
-    
+
   }
 }
 
@@ -131,10 +175,7 @@ input[type="text"], input[type="password"] {
   font-size: 2.8em;
   padding: 20px 0;
 }
-.home a {
-  width: 100px;
-  margin: 5px;
-}
+
 
 ul {
   -webkit-padding-start: 0px;
@@ -167,6 +208,11 @@ nav {
   position: absolute;
   top: 2%;
   left: 2%;
+  .profile-pic {
+    position: absolute;
+    width: 75px;
+    border-radius: $button_radius;
+  }
 }
 .loginstatus a, nav a {
   display: inline-block;
@@ -177,10 +223,14 @@ nav {
   &:hover {
       color: white;
   }
-}
 
+}
+.loginstatus p {
+  display: inline-block;
+  min-width: 100px;
+}
 .loginstatus a {
-    border: 1px solid $color_warning;
+    /*border: 1px solid $color_warning;*/
   }
 
   h1 {

@@ -4,15 +4,14 @@ class UsersController < ApplicationController
   def index 
       @users = User.all
       @to_message_ids = current_user.messages.collect {|message| message.to_user_id}
-      
   end
 
     def update 
       
       @user = User.find(params[:id])
-      @user.image = params[:user][:image]
+      # @user.image = params[:user][:image]
       
-        if @user.save
+        if @user.update_attributes(params[:user])
            redirect_to root_path
         else
           render :edit
@@ -50,9 +49,9 @@ class UsersController < ApplicationController
 
       if @user.save
         session[:current_user_id] = @user.id
-        redirect_to root_path, notice: "Welcome to the games portal." 
+        redirect_to root_path, notice: "Welcome to the games portal!" 
       else
-        render action: "new" 
+        render action: "new" , :layout => 'home'
       end
   end
 
