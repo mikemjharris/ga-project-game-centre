@@ -57,9 +57,14 @@ a:hover {
 main .left_menu {
   position: relative;
   width: 300px;
-  margin: 0 auto;
-  top: 0;
+  margin: 50px auto;
+  top: 150px;
+  left: auto;
   display: inline;
+  b {
+    font-size: 1.5em;
+    
+  }
 }
 
 .left_menu {
@@ -68,7 +73,7 @@ main .left_menu {
   display: inline-block;
   position: absolute;
   top: 20%;
-  margin-left: 5%;
+  left: 3%;
 
   a {
     padding: 10px;
@@ -79,6 +84,21 @@ main .left_menu {
     margin: 10px 0;
     background: $color;
   }
+}
+
+
+.right_menu{
+  @extend .left_menu;
+  right: 3%;
+  left: auto;
+  table{
+    margin: 0 auto;
+    margin-top: 10px;
+    td { 
+      padding: 5px 10px;
+    }
+  }
+
 }
 
 main {
@@ -125,8 +145,29 @@ li {
   margin: 0;
   border-radius: $button_radius;
   }
+.notif_anchor {
+  position: relative;
 
+}
 
+.notification {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: -20px;
+  left: -15px;
+  background: $color_warning;
+  text-align: center;
+  line-height: 25px;
+  color:white;
+}
+
+nav {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
 .loginstatus a, nav a {
   display: inline-block;
   background: $color;
@@ -144,6 +185,8 @@ li {
 
   h1 {
     text-align: center;
+    font-size: 3em;
+    margin-bottom: 40px;
   }
 
   .live_games {

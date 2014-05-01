@@ -7,14 +7,35 @@ class UsersController < ApplicationController
       
   end
 
+    def update 
+      
+      @user = User.find(params[:id])
+      @user.image = params[:user][:image]
+      
+        if @user.save
+           redirect_to root_path
+        else
+          render :edit
+        end
+      
+    end
+
  
   def show
     @user = current_user
+
+    
+  end
+
+   def games
+    @user = current_user
     @live_games = Ttt.live_games(@user.id)
+
+    render 'games'
   end
 
   def edit
-
+    @user = User.find(params[:id])
   end
 
 
@@ -29,7 +50,7 @@ class UsersController < ApplicationController
 
       if @user.save
         session[:current_user_id] = @user.id
-        redirect_to root_path, notice: 'User was successfully created.' 
+        redirect_to root_path, notice: "Welcome to the games portal." 
       else
         render action: "new" 
       end
@@ -48,7 +69,7 @@ class UsersController < ApplicationController
     @games_vs_player_two_drawn = Ttt.where(live_game: false, player_one_id: @user.id, computer: nil,player_two: nil, winner: 0).count   
     
     
-    @games_vs_all = Ttt.where("(player_one_id = ? or player_two_id = ?) and live_game = ?", @user.id, @user.id, false).count
+    @games_vs_all = Ttt.games_played(@user)
     @games_vs_all_won = Ttt.where("player_one_id = ? and winner = ?", @user.id, 1).count
     @games_vs_all_won += Ttt.where("player_two_id = ? and winner = ?", @user.id, 2).count
      @games_vs_all_lost = Ttt.where("player_one_id = ? and winner = ?", @user.id, 2).count
@@ -73,9 +94,7 @@ class UsersController < ApplicationController
   end
 
 
-  def update 
 
-  end
 
 
   def destroy

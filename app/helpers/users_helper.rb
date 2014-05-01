@@ -23,8 +23,17 @@ module UsersHelper
   end
 
   def nos_live_games
-      @live_games = Ttt.where("(player_one_id = ? or player_two_id = ?) and live_game = ?", current_user.id, current_user.id, true).count
-
+      Ttt.where("(player_one_id = ? or player_two_id = ?) and live_game = ?", current_user.id, current_user.id, true).count
   end
+
+
+  def live_games
+     Ttt.where("(player_one_id = ? or player_two_id = ?) and live_game = ?", current_user.id, current_user.id, true).count
+  end
+
+  def challenges
+    Message.where(to_user_id: 1)
+  end  
+
 
 end

@@ -2,6 +2,36 @@
 
 <div class="right_menu">
 
+       <ul>
+  
+  <li><b><%= current_user.name.capitalize %>'s Score</b></li>
+  <table> 
+    <tr>
+    <th>P</th><th>W</th><th>D</th><th>L</th>
+    </tr>
+    <tr>
+      <td><%= Ttt.games_played(current_user) %> </td>
+      <td><%= Ttt.games_all_won(current_user) %> </td>
+      <td><%= Ttt.games_all_drawn(current_user) %> </td>
+      <td><%= Ttt.games_all_lost(current_user) %> </td>
+    </tr>
+  </table>
+</li>
+<li>
+  <%= link_to 'Full Scoreboard', scoreboard_path(current_user) %>
+  </li>
+        <li><%= link_to games_path(current_user) do %>
+              <div class="notif_anchor">Live Games
+              <% if live_games > 0 %>
+              <div class="notification"><%= live_games %></div>
+              <% end %>
+            </div>
+              
+              <% end %> 
+        </li>
+
+  </ul>
+
 </div>
 
 

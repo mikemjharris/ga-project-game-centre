@@ -8,12 +8,12 @@ SirrahGames::Application.routes.draw do
   end
 
   
-  resources :users 
-  resources :sessions
-
+   
+  resources :sessions, :path => 'tic'
+  get 'users/:id/games', to:  'users#games', as: 'games'
   get 'users/:id/scoreboard', to:  'users#scoreboard', as: 'scoreboard'
   root to: "homes#index" 
-
+  
   #:path => "tictactoe"
 
   # The priority is based upon order of creation:
