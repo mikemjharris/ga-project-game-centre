@@ -24,25 +24,25 @@ module TttsHelper
     end
   end
 
-  def winner_name
-    case @ttt.winner
+  def winner_name(game)
+    case game.winner
      when 0
         name = "Game tied." 
      when 1
-      if @ttt.player_one.name
-        name = @ttt.player_one.name.capitalize + " won"
+      if game.player_one.name
+        name = game.player_one.name.capitalize + " won"
       else 
         name = "Player one won"
       end
      when 2
-      if @ttt.player_two.nil?
-        if @ttt.computer
+      if game.player_two.nil?
+        if game.computer
           name = "The computer won"
         else
           name = "Player two won"
         end
       else 
-        name = @ttt.player_two.name.capitalize + " won"
+        name = game.player_two.name.capitalize + " won"
       end   
     end  
           

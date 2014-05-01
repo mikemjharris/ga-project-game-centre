@@ -1,10 +1,19 @@
-<h1>Live games</h1>
+<h1><%= @title %> Games</h1>
+
 
 <div class="live_games">
   <ul>
-<% @live_games.each do |game| %>
+<% @games.each do |game| %>
     <% tag = live_game(game) %>
-    <li><%= link_to "#{tag}", ttt_path(game) %></li>       
+    <li><%= link_to  ttt_path(game) do %>
+        <%= tag %>
+        
+      <% if game.winner %>
+        
+        : <%= winner_name(game) %>
+
+      <% end %>
+      <% end %></li>       
 <% end %>
 <ul>
 <div>

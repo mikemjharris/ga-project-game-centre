@@ -28,7 +28,7 @@ $button_radius: 7px;
 }  
 
 
-.home a , input[type="button"], input[type="submit"] {
+.home a , input[type="button"], input[type="submit"], input[type="file"]  {
   font-weight: bold;
   align-items: flex-start;
   text-align: center;
@@ -57,8 +57,27 @@ $button_radius: 7px;
     margin: 10px 0;
     background: $color;
   }
+  .toggle > .search_box {
+    height: 0;
+    overflow: hidden;
+    transition: height 1s;
+  }
+  .toggle:hover > .search_box {
+    height: 50px;
 
+  }
 
+.search_box {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  input[type="text"], input[type="submit"]{
+    width: 45%;
+  }
+  p{
+    display:inline;
+  }
+}
 
 .field_with_errors input[type="text"], .field_with_errors input[type="password"]{
   background: $color_warning;
@@ -82,7 +101,9 @@ a {
   color: black;
   border-radius: $button_radius;
 }
-
+.home input[type="submit"] {
+  font-size: 1.2em;
+}
 a:hover {
   color: $color_warning;
 }
@@ -90,7 +111,7 @@ a:hover {
 .home {
   width: 80%;
   max-width: 300px;
-  margin: 10% auto;
+  margin: 5% auto;
   text-align: center;
 } 
 
@@ -100,9 +121,9 @@ a:hover {
 
 main .left_menu {
   position: relative;
-  width: 300px;
+  width: 500px;
   margin: 50px auto;
-  top: 150px;
+  top: 80px;
   left: auto;
   display: inline;
   b {
@@ -110,6 +131,7 @@ main .left_menu {
 
   }
 }
+
 
 .left_menu {
   text-align: center;
@@ -191,6 +213,14 @@ li {
 
 }
 
+ 
+  a:hover .notif_anchor .notification {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+  }
+   
+
 .notification {
   border-radius: 50%;
   width: 25px;
@@ -202,6 +232,7 @@ li {
   text-align: center;
   line-height: 25px;
   color:white;
+  transition: all 0.2s;
 }
 
 nav {
@@ -253,12 +284,12 @@ nav {
       }
 }
 
-  .challenge {
+  .challenge, .scoreboard {
     margin: 0 auto;
     text-align: center;
        th {
         font-size: 1.2em;
-        border-bottom: 1px solid black;
+        /*border-bottom: 1px solid black;*/
       }
    
       tr:nth-child(even) {
@@ -278,7 +309,12 @@ nav {
      
     }
   }
-
+.edit_user {
+  
+  margin: 0 auto;
+  width: 300px;
+  text-align: center;
+}
   .players {
     font-size: 2em;
     text-align: center;

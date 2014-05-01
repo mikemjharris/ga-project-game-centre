@@ -18,4 +18,22 @@
  
   <% end %>
 
+    <% if errors.any? %>
+      <div class="errors">
+         
+          <p><%= errors[:base].first %></p>
+      </div>
+      <% end %>
+    <% if flash.any? %>
+        <div class="flash">
+          <% if flash[:welcome] %>
+                 <p><%=  flash[:welcome] %></p><br />
+                 <p><%= welcome_message %></p>
+            <% else %>
+              <% flash.each do |name, msg| %>
+               <%= content_tag :p, msg, :id => "flash_#{name}" %>
+              <% end %>
+            <% end %>
+        </div>
+    <% end %>
   <%= link_to 'Back', root_path %>

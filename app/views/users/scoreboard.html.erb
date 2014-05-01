@@ -1,42 +1,46 @@
 <h1>Scoreboard</h1>
-<table class="live_games">
+<table class="scoreboard">
   <tr>
   <th>Opponent</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th>
 </tr>
 <tr>
-    <td>All</td>
-    <td><%= @games_vs_all %></td>
-    <td><%= @games_vs_all_won %></td>
-    <td><%= @games_vs_all_drawn %></td>
-    <td><%= @games_vs_all_lost %></td>
+    <td><%= link_to 'All',games_path(current_user, which_games: "all")  %></td>
+    <td><%= current_user.games_played.count %></td>
+    <td><%= current_user.games_all_won.count %></td>
+    <td><%= current_user.games_all_drawn.count %></td>
+    <td><%= current_user.games_all_lost.count %></td>
+
+  </tr>
+
+  <tr>
+    <td><%= link_to 'Computer',games_path(current_user, which_games: "all")  %></td>
+    <td><%= current_user.games_computer.count %></td>
+    <td><%= current_user.games_computer_won.count %></td>
+    <td><%= current_user.games_computer_drawn.count%></td>
+    <td><%= current_user.games_computer_lost.count  %></td>
 
   </tr>
   <tr>
-    <td>Computer</td>
-    <td><%= @games_vs_computer %></td>
-    <td><%= @games_vs_computer_won %></td>
-    <td><%= @games_vs_computer_drawn %></td>
-    <td><%= @games_vs_computer_lost %></td>
-  </tr>
-   <tr>
-    <td>Player Two</td>
-    <td><%= @games_vs_player_two %></td>
-    <td><%= @games_vs_player_two_won %></td>
-    <td><%= @games_vs_player_two_drawn %></td>
-    <td><%= @games_vs_player_two_lost %></td>
+    <td><%= link_to 'Player Two',games_path(current_user, which_games: "all")  %></td>
+    <td><%= current_user.games_player_two.count %></td>
+    <td><%= current_user.games_player_two_won.count %></td>
+    <td><%= current_user.games_player_two_drawn.count %></td>
+    <td><%= current_user.games_player_two_lost.count  %></td>
+
   </tr>
   <tr>
-    <td>Another User</td>
-    <td><%= @games_vs_user %></td>
-    <td><%= @games_vs_user_won %></td>
-    <td><%= @games_vs_user_drawn %></td>
-    <td><%= @games_vs_user_lost %></td>
+    <td><%= link_to 'User',games_path(current_user, which_games: "all")  %></td>
+    <td><%= current_user.games_user.count %></td>
+    <td><%= current_user.games_user_won.count %></td>
+    <td><%= current_user.games_user_drawn.count%></td>
+    <td><%= current_user.games_user_lost.count  %></td>
+
   </tr>
+  
   
   
 </table>
-  <%= link_to " live games", user_path(@user) %>
-<%= live_games %>
+  
     
   
 

@@ -11,22 +11,11 @@ class Ttt < ActiveRecord::Base
   belongs_to :player_one, class_name: 'User'
   belongs_to :player_two, class_name: 'User'
 
-  def self.games_played(user)
-    self.where("(player_one_id = ? or player_two_id = ?) and live_game = ?", user.id, user.id, false).count
+ 
+  
+  def not_live
+    where("live_game is false")
   end
-  def self.games_all_won(user) 
-    games_won = self.where("player_one_id = ? and winner = ?", user.id, 1).count
-    games_won += self.where("player_two_id = ? and winner = ?", user.id, 2).count
-  end
-  def self.games_all_lost(user) 
-    games_won = self.where("player_one_id = ? and winner = ?", user.id, 2).count
-    games_won += self.where("player_two_id = ? and winner = ?", user.id, 1).count
-  end  
-   def self.games_all_drawn(user) 
-    games_won = self.where("player_one_id = ? and winner = ?", user.id, 0).count
-    games_won += self.where("player_two_id = ? and winner = ?", user.id, 0).count
-  end 
-
 
   def player_setup
     errors.add(:base, "Can't have a computer player and player two") if self.computer && self.player_two_id

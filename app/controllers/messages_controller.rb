@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
   def index
     @to_messages = current_user.messages
     @from_messages = Message.where(to_user_id: current_user)
+
   end
 
   def show
@@ -22,7 +23,7 @@ class MessagesController < ApplicationController
     title = "I challenge you to a game!"
     message = "I challenge you to a game at dawn"
     @user.messages.create(to_user: @user_to , message: message, title: title, read: false)
-    redirect_to users_path
+    redirect_to challenges_path(@user)
   end
 
   def new

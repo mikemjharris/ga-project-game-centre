@@ -18,7 +18,7 @@ module UsersHelper
           return game.player_one.name.capitalize + " vs you"
         end
       else 
-          return "You vs Player Two (same computer)"
+          return "You vs Player Two"
       end
   end
 

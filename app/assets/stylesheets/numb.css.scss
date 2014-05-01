@@ -1,0 +1,133 @@
+$base-color: #dbf970;
+$base-color-t: #ff7373;
+.middle {
+  text-align: center; 
+}
+.middle form {
+  display: inline;
+  margin: 0 auto;
+  width: 300px;
+  input[type="submit"] {
+    padding: 5px;
+    font-size: 1.5rem;
+  }
+
+}
+.numbcont {
+ font-size: 0;
+  width: 420px;
+  height: 420px;
+  position: relative;
+  margin: 0px auto;
+  margin-top: 75px;
+  text-align: center;
+  div {
+    font-size: 1.5rem;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 20px;
+    line-height: 50px;
+  }
+}
+
+.controls {
+  display: inline-block;
+  width: 100px;
+  height: 200px;
+  border: 1px solid black;
+  a {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+
+  }
+
+}
+
+.numbcont .cont_left, .numbcont .cont_right, .numbcont .cont_up ,.numbcont .cont_down  {
+  height: 0px;
+  width: 0px;
+  padding: 0px;
+  margin: 0px;
+  position: absolute;
+  left: -50px;
+  top: 150px;
+  border-right: 50px solid $base-color;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+
+}
+.numbcont .cont_right {
+  border-right:none;
+  border-left: 50px solid $base-color;
+  right: -50px;
+  left:auto;
+}
+.numbcont .cont_up {
+  border-right:50px solid transparent;
+  border-left:50px solid transparent;
+  border-bottom: 50px solid $base-color;
+  top: -110px;
+  left:150px;
+}
+.numbcont .cont_down {
+  border-right:50px solid transparent;
+  border-left:50px solid transparent;
+  border-top: 50px solid $base-color;
+  border-bottom: none;
+  top: 410px;
+ 
+  left:150px;
+}
+
+
+.col2 {
+  background: lighten( $base-color, 20% )
+}
+.col4 {
+  background: lighten( $base-color, 10% )
+}
+.col8 {
+  background: $base-color
+}
+
+.col16 {
+  background: darken( $base-color, 20%)
+}
+
+.col32 {
+  background: darken( $base-color, 40%)
+}
+
+.col64 {
+  background: lighten( $base-color-t, 20% )
+}
+.col128 {
+  background: lighten( $base-color-t, 10% )
+}
+.col256 {
+  background: $base-color-t
+}
+
+.col512 {
+  background: darken( $base-color-t, 20%)
+}
+
+.col1024 {
+  background: darken( $base-color-t, 40%)
+}
+.col2048 {
+  background: darken( $base-color-t, 60%)
+}
+
+
+
+
+
+
+
+
+
+

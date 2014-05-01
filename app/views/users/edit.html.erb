@@ -1,4 +1,4 @@
-<h1>User settings</h1>
+<h1>Update User Settings</h1>
 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
@@ -22,7 +22,7 @@
 
 
   
-    <%= f.label :image %>
+    <%= f.label :image %><br />
     <%= f.file_field :image%>
   <div class="scheme">
     <%= f.label :scheme %><br />

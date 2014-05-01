@@ -1,7 +1,7 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <p>There were three<%= pluralize(@user.errors.count, "error") %> in the form.</p>
+      <p><%= pluralize(@user.errors.count, "error") %> in the form.</p>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
@@ -30,7 +30,7 @@
   </div>
   <div class="actions">
     <%= f.submit %>
-    
+
   </div>
 
 <% end %>

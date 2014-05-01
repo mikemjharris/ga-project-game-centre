@@ -10,10 +10,10 @@
     <th>P</th><th>W</th><th>D</th><th>L</th>
     </tr>
     <tr>
-      <td><%= Ttt.games_played(current_user) %> </td>
-      <td><%= Ttt.games_all_won(current_user) %> </td>
-      <td><%= Ttt.games_all_drawn(current_user) %> </td>
-      <td><%= Ttt.games_all_lost(current_user) %> </td>
+      <td><%= current_user.games_played.count %> </td>
+      <td><%= current_user.games_all_won.count%> </td>
+      <td><%= current_user.games_all_drawn.count %> </td>
+      <td><%= current_user.games_all_lost.count %> </td>
     </tr>
   </table>
 </li>

@@ -16,6 +16,7 @@
 
         <%= link_to 'Logout', session_path(0), method: :delete, :class => "logout"  %>
         <%= link_to 'Settings', edit_user_path(current_user), :class => "logout"  %>
+        <%= link_to '4096', numbs_path(current_user), :class => "logout"  %>
 
          <%= image_tag current_user.image_url(:thumb), class: "profile-pic" if current_user.image? %>
         
