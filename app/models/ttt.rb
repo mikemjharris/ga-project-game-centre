@@ -94,8 +94,20 @@ class Ttt < ActiveRecord::Base
       free_squares = []
       (0...9).each {|i| free_squares << 2 ** i}
       self.moves.each {|move| free_squares.delete(move.player_move)}  
-      free_squares.sample
+      result = [] 
+      free_squares.each do |square|
+          if check_solution(next_player = 2, move = square)
+                result << square
+          end
+      end
+      if result.any?
+        result.sample
+      else
+        free_squares.sample
+      end
     end
+
+
 
  
   def make_matrix(position_in_binary)
@@ -140,8 +152,8 @@ class Ttt < ActiveRecord::Base
     end
   end  
 
-  def check_solution
-    player_position = 0
+  def check_solution(next_player = nil, move = 0)
+    player_position = move
     if self.next_player == 2 
       self.moves.where(player: 1).each {|move| player_position += move.player_move}
     else

@@ -86,7 +86,9 @@ $base-color-t: #ff7373;
   left:150px;
 }
 
-
+.col0 {
+    color: white;
+}
 .col2 {
   background: lighten( $base-color, 20% )
 }
