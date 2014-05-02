@@ -167,6 +167,8 @@ main .left_menu {
 
 }
 
+
+
 main {
   width: 80%;
   max-width: 600px;
@@ -175,7 +177,7 @@ main {
   position: relative;
 }
 
-.errors p, .flash p {
+.score, .errors p, .flash p {
   border-radius: $button_radius;
   background: $color_warning;
   padding: 10px;
@@ -184,7 +186,7 @@ main {
     display: inline-block;
 }
 
-input[type="text"], input[type="password"] {
+.score, input[type="text"], input[type="password"] {
   padding: 10px;
   text-align: center;
 }

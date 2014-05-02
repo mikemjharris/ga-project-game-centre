@@ -1,7 +1,20 @@
 class Numb < ActiveRecord::Base
   attr_accessible :s1, :s2, :s3, :s4, :s5, :s6, :s7, :s8, :s9, :s10,
    :s11, :s12, :s13, :s14, :s15, :s16, :user_id, :score
+ 
+  def compare_two_board_layouts(nu2)
+    result = true
+    (1..16).each do |i|
+        result = result && (self["s" + i.to_s] == nu2["s" + i.to_s])
+    end 
+    result
+  end
 
+  def compare_future_move(nu3)
+      result = true
+      result = true && self.compare_two_board_layouts(nu3.move("u"))
+
+  end
 
    def move_up
     move("u")
@@ -90,9 +103,6 @@ class Numb < ActiveRecord::Base
   end
 
 
-  def compare_two_squares(a , b)
-    
 
-  end
 
 end

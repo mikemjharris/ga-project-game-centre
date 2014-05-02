@@ -4,7 +4,8 @@
 <div class="numbcont">
 
 <% 16.times do |i| %>
-  <div class="col<%= @numb["s" + (i+1).to_s] %>"><%= @numb["s" + (i+1).to_s] %></div>
+  <div class="col<%= @numb["s" + (i+1).to_s] %>"> 
+    <%= @numb["s" + (i+1).to_s] %></div>
 
 <% end %>
 
@@ -24,7 +25,7 @@
 </div>
 </div>
 <div>
-<p>Score: <%= @numb.score %></p>
+<p class="score">Score: <%= @numb.score %></p>
 
 <%= button_to "new game", numbs_path %> 
 </dvi>

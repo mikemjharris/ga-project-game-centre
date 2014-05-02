@@ -32,11 +32,30 @@ class NumbsController < ApplicationController
 
   def update
     @numb = Numb.find(params[:id])
-      @numb.move(params[:dir])
-      newsquare = @numb.free_moves.sample
-      @numb[newsquare] = 2
-      @numb.save
-
+    @numb.move(params[:dir])
+    @numb2 = Numb.find(params[:id])
+    newsquare = @numb.free_moves.sample
+      
+     if @numb.compare_two_board_layouts(@numb2)
+        @numb2.move("l")
+        if @numb.compare_two_board_layouts(@numb2)
+          @numb2.move("r") 
+          if @numb.compare_two_board_layouts(@numb2)
+            @numb2.move("u") 
+            if @numb.compare_two_board_layouts(@numb2)
+              @numb2.move("d") 
+              if @numb.compare_two_board_layouts(@numb2)
+                flash[:endgame] = "Game over congratulations!"
+              end
+            end
+          end
+        end  
+      else
+        @numb[newsquare] = 2
+        @numb.save
+      end
+    
+    
     render 'show'
 
   end
